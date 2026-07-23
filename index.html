@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frédéric Marie-Appoline — CV</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --teal:#1a6b6b; --teal-mid:#1f8080; --teal-light:#2aaeae;
+      --teal-glow:rgba(42,174,174,0.12); --bg:#0b1214; --bg-card:#101a1c;
+      --bg-hover:#142022; --line:rgba(42,174,174,0.18); --text:#d8e8e8;
+      --text-dim:#7aa0a0; --text-faint:#3d6060; --accent:#2aaeae; --white:#f0f8f8;
+      --serif:'DM Serif Display',Georgia,serif; --mono:'DM Mono','Courier New',monospace;
+      --sans:'Instrument Sans',sans-serif; --ease:cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    html { scroll-behavior: smooth; }
+    body { background:var(--bg); color:var(--text); font-family:var(--sans); font-size:15px; line-height:1.65; overflow-x:hidden; }
+    body::before { content:''; position:fixed; inset:0; z-index:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E"); pointer-events:none; opacity:0.4; }
+    .container { position:relative; z-index:1; max-width:900px; margin:0 auto; padding:0 2rem; }
+    section { padding:5rem 0; }
+    .section-divider { width:100%; height:1px; background:linear-gradient(90deg,transparent,var(--line) 30%,var(--line) 70%,transparent); }
+    .section-label { font-family:var(--mono); font-size:0.65rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--text-faint); margin-bottom:2.5rem; display:flex; align-items:center; gap:1rem; }
+    .section-label::after { content:''; flex:1; height:1px; background:var(--line); }
+
+    /* HEADER */
+    #header { padding:5rem 0 4rem; position:relative; }
+    .header-eyebrow { font-family:var(--mono); font-size:0.7rem; letter-spacing:0.2em; color:var(--accent); text-transform:uppercase; margin-bottom:1.2rem; opacity:0; animation:fadeUp 0.8s var(--ease) 0.1s forwards; }
+    .header-name { font-family:var(--serif); font-size:clamp(2.8rem,7vw,5.2rem); line-height:1.05; color:var(--white); letter-spacing:-0.01em; opacity:0; animation:fadeUp 0.9s var(--ease) 0.2s forwards; }
+    .header-name em { font-style:italic; color:var(--accent); }
+    .header-title { font-size:1rem; font-weight:400; color:var(--text-dim); margin-top:1rem; opacity:0; animation:fadeUp 0.9s var(--ease) 0.35s forwards; }
+    .header-contact { display:flex; flex-wrap:wrap; gap:0.5rem 1.5rem; margin-top:2.5rem; opacity:0; animation:fadeUp 0.9s var(--ease) 0.5s forwards; }
+    .header-contact a { font-family:var(--mono); font-size:0.75rem; color:var(--text-dim); text-decoration:none; letter-spacing:0.05em; display:flex; align-items:center; gap:0.4rem; transition:color 0.2s; }
+    .header-contact a:hover { color:var(--accent); }
+    .header-contact a svg { width:13px; height:13px; fill:currentColor; }
+    #header::after { content:''; position:absolute; left:-2rem; top:5rem; bottom:3rem; width:2px; background:linear-gradient(to bottom,var(--accent),transparent); opacity:0; animation:fadeIn 1.2s var(--ease) 0.6s forwards; }
+
+    /* ACCROCHE */
+    #accroche { padding-top:0; }
+    .accroche-grid { display:grid; grid-template-columns:1fr 1fr; gap:2px; }
+    @media(max-width:620px){ .accroche-grid { grid-template-columns:1fr; } }
+    .accroche-card { background:var(--bg-card); padding:2rem; border:1px solid var(--line); transition:background 0.25s,border-color 0.25s; }
+    .accroche-card:hover { background:var(--bg-hover); border-color:rgba(42,174,174,0.35); }
+    .accroche-card:first-child { grid-column:1/-1; background:linear-gradient(135deg,var(--bg-card) 60%,rgba(26,107,107,0.18)); }
+    .accroche-text { font-size:1.1rem; line-height:1.75; color:var(--text); }
+    .accroche-text strong { color:var(--accent); font-weight:600; }
+    .accroche-stat { display:flex; flex-direction:column; justify-content:center; }
+    .accroche-stat .num { font-family:var(--serif); font-size:3rem; color:var(--white); line-height:1; }
+    .accroche-stat .num em { color:var(--accent); font-style:normal; }
+    .accroche-stat .label { font-family:var(--mono); font-size:0.65rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--text-dim); margin-top:0.4rem; }
+    .accroche-link { grid-column:1/-1; display:inline-flex; align-items:center; gap:0.6rem; font-family:var(--mono); font-size:0.7rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent); text-decoration:none; padding:1rem 2rem; background:var(--bg-card); border:1px solid var(--line); border-top:none; transition:background 0.2s,gap 0.2s; }
+    .accroche-link:hover { background:var(--bg-hover); gap:1rem; }
+    .accroche-link svg { width:14px; height:14px; fill:none; stroke:currentColor; stroke-width:2; }
+
+    /* EXPÉRIENCES */
+    .exp-list { display:flex; flex-direction:column; gap:2px; }
+    .exp-item { background:var(--bg-card); border:1px solid var(--line); padding:2rem; display:grid; grid-template-columns:7rem 1fr auto; gap:0 2rem; align-items:start; text-decoration:none; color:inherit; transition:background 0.2s,border-color 0.2s; }
+    .exp-item:hover { background:var(--bg-hover); border-color:rgba(42,174,174,0.35); }
+    @media(max-width:620px){ .exp-item { grid-template-columns:1fr; gap:0.4rem; } .exp-arrow { display:none; } }
+    .exp-period { font-family:var(--mono); font-size:0.7rem; color:var(--text-faint); letter-spacing:0.05em; padding-top:0.25rem; }
+    .exp-company { font-family:var(--mono); font-size:0.65rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent); margin-bottom:0.25rem; }
+    .exp-role { font-family:var(--sans); font-size:1.05rem; font-weight:600; color:var(--white); margin-bottom:0.6rem; }
+    .exp-mission { font-size:0.88rem; color:var(--text-dim); line-height:1.65; }
+    .exp-tags { display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:0.9rem; }
+    .exp-tag { font-family:var(--mono); font-size:0.62rem; letter-spacing:0.08em; padding:0.2rem 0.55rem; background:var(--teal-glow); border:1px solid var(--line); color:var(--text-dim); border-radius:2px; }
+    .exp-arrow { color:var(--text-faint); font-size:1.2rem; transition:color 0.2s,transform 0.2s; padding-top:0.1rem; }
+    .exp-item:hover .exp-arrow { color:var(--accent); transform:translateX(4px); }
+
+    /* FORMATIONS */
+    .formation-grid { display:grid; grid-template-columns:1fr 1fr; gap:2px; }
+    @media(max-width:560px){ .formation-grid { grid-template-columns:1fr; } }
+    .formation-item { background:var(--bg-card); border:1px solid var(--line); padding:1.5rem 1.8rem; transition:background 0.2s,border-color 0.2s; }
+    .formation-item:hover { background:var(--bg-hover); border-color:rgba(42,174,174,0.35); }
+    .formation-item.featured { grid-column:1/-1; background:linear-gradient(120deg,var(--bg-card) 70%,rgba(26,107,107,0.2)); }
+    .formation-year { font-family:var(--mono); font-size:0.65rem; letter-spacing:0.15em; color:var(--accent); text-transform:uppercase; margin-bottom:0.4rem; }
+    .formation-title { font-weight:600; color:var(--white); font-size:0.95rem; line-height:1.3; }
+    .formation-org { font-size:0.8rem; color:var(--text-dim); margin-top:0.3rem; }
+
+    /* COMPÉTENCES */
+    .skills-grid { display:grid; grid-template-columns:1fr 1fr; gap:2px; }
+    @media(max-width:560px){ .skills-grid { grid-template-columns:1fr; } }
+    .skill-block { background:var(--bg-card); border:1px solid var(--line); padding:1.8rem; }
+    .skill-block-title { font-family:var(--mono); font-size:0.65rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--accent); margin-bottom:1.2rem; }
+    .skill-pill-list { display:flex; flex-wrap:wrap; gap:0.45rem; }
+    .skill-pill { font-family:var(--mono); font-size:0.68rem; letter-spacing:0.06em; padding:0.3rem 0.7rem; background:transparent; border:1px solid var(--line); color:var(--text-dim); border-radius:1px; transition:background 0.15s,color 0.15s,border-color 0.15s; }
+    .skill-pill:hover { background:var(--teal-glow); border-color:var(--accent); color:var(--accent); }
+    .skill-pill.hot { border-color:rgba(42,174,174,0.45); color:var(--text); }
+    .portfolio-cta { grid-column:1/-1; background:var(--teal); border:1px solid var(--teal-mid); padding:2rem; display:flex; align-items:center; justify-content:space-between; text-decoration:none; color:var(--white); transition:background 0.2s; gap:1rem; }
+    .portfolio-cta:hover { background:var(--teal-mid); }
+    .portfolio-cta-label { font-family:var(--mono); font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.6); margin-bottom:0.35rem; }
+    .portfolio-cta-title { font-family:var(--serif); font-size:1.3rem; line-height:1.2; }
+    .portfolio-cta-arrow { font-size:1.8rem; flex-shrink:0; transition:transform 0.2s; }
+    .portfolio-cta:hover .portfolio-cta-arrow { transform:translateX(6px); }
+
+    /* FOOTER */
+    footer { padding:3rem 0; border-top:1px solid var(--line); }
+    .footer-inner { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
+    .footer-sig { font-family:var(--serif); font-size:0.9rem; color:var(--text-faint); font-style:italic; }
+    .footer-links { display:flex; gap:1.5rem; }
+    .footer-links a { font-family:var(--mono); font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-faint); text-decoration:none; transition:color 0.2s; }
+    .footer-links a:hover { color:var(--accent); }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+    .reveal { opacity:0; transform:translateY(16px); transition:opacity 0.65s var(--ease),transform 0.65s var(--ease); }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+    ::-webkit-scrollbar{width:4px} ::-webkit-scrollbar-track{background:var(--bg)} ::-webkit-scrollbar-thumb{background:var(--teal);border-radius:2px}
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header id="header">
+    <div class="header-eyebrow">Disponible · Saint-Denis (93)</div>
+    <h1 class="header-name">Frédéric<br><em>Marie-Appoline</em></h1>
+    <p class="header-title">Technicien Support IT · Gestionnaire de Données · Relation Client</p>
+    <nav class="header-contact">
+      <a href="mailto:fred.marie.appoline@gmail.com">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        fred.marie.appoline@gmail.com
+      </a>
+      <a href="tel:0649924442">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.1 10.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012.02 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
+        06 49 92 44 42
+      </a>
+      <a href="https://linkedin.com/in/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+    </nav>
+  </header>
+</div>
+
+<div class="section-divider"></div>
+
+<div class="container">
+  <section id="accroche">
+    <p class="section-label">Profil</p>
+    <div class="accroche-grid reveal">
+      <div class="accroche-card">
+        <p class="accroche-text">
+          Technicien IT avec <strong>plus de 10 ans d'expérience</strong> dans des environnements critiques et exigeants — nucléaire, luxe, agriculture connectée, fibre optique. Je maîtrise le support N1/N2, la gestion de parc, l'administration Active Directory et le traitement rigoureux de données. Polyvalent par nature, <strong>précis par méthode</strong>.
+        </p>
+      </div>
+      <div class="accroche-card accroche-stat">
+        <span class="num">10<em>+</em></span>
+        <span class="label">Années d'expérience</span>
+      </div>
+      <div class="accroche-card accroche-stat">
+        <span class="num">4</span>
+        <span class="label">Secteurs couverts</span>
+      </div>
+      <a href="#" class="accroche-link" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Voir ma page Entreprise / Projets
+      </a>
+    </div>
+  </section>
+</div>
+
+<div class="section-divider"></div>
+
+<div class="container">
+  <section id="experiences">
+    <p class="section-label">Expériences Professionnelles</p>
+    <div class="exp-list">
+
+      <a class="exp-item reveal" href="experiences/altitude-infra.html">
+        <div class="exp-period">2023 – 2024</div>
+        <div class="exp-body">
+          <div class="exp-company">Altitude Infra</div>
+          <div class="exp-role">Technicien d'exploitation FTTH</div>
+          <p class="exp-mission">Au sein d'un opérateur d'infrastructure fibre nationale, j'assurais le support technique de niveau 2 auprès des FAI et des techniciens terrain. Analyse d'incidents réseau, paramétrage à distance des équipements clients, coordination des interventions sur les points de raccordement (PTO/PBO).</p>
+          <div class="exp-tags">
+            <span class="exp-tag">FTTH</span>
+            <span class="exp-tag">PTO/PBO</span>
+            <span class="exp-tag">ITSM</span>
+            <span class="exp-tag">FAI</span>
+            <span class="exp-tag">Escalade N3</span>
+          </div>
+        </div>
+        <div class="exp-arrow">→</div>
+      </a>
+
+      <a class="exp-item reveal" href="experiences/latitude-gps.html">
+        <div class="exp-period">2022 – 2023</div>
+        <div class="exp-body">
+          <div class="exp-company">Latitude GPS</div>
+          <div class="exp-role">Technicien opérateur SAV</div>
+          <p class="exp-mission">Support technique et SAV pour des agriculteurs équipés de consoles de guidage Trimble. Diagnostic des signaux GNSS/GSM, configuration personnalisée des équipements, rédaction de procédures internes et logigrammes de dépannage.</p>
+          <div class="exp-tags">
+            <span class="exp-tag">GNSS / RTK</span>
+            <span class="exp-tag">SAV</span>
+            <span class="exp-tag">Trimble</span>
+            <span class="exp-tag">Rédaction procédures</span>
+          </div>
+        </div>
+        <div class="exp-arrow">→</div>
+      </a>
+
+      <a class="exp-item reveal" href="experiences/helpline-lvmh.html">
+        <div class="exp-period">2015 – 2019</div>
+        <div class="exp-body">
+          <div class="exp-company">Helpline · prestation LVMH</div>
+          <div class="exp-role">Technicien helpdesk</div>
+          <p class="exp-mission">Support IT omnicanal pour le groupe LVMH — siège, boutiques, forces de vente. Administration des accès SAP et Active Directory, gestion de la sécurité des postes, suivi rigoureux du backlog avec respect des SLA.</p>
+          <div class="exp-tags">
+            <span class="exp-tag">LVMH</span>
+            <span class="exp-tag">SAP Admin</span>
+            <span class="exp-tag">Active Directory</span>
+            <span class="exp-tag">BitLocker</span>
+            <span class="exp-tag">SLA</span>
+          </div>
+        </div>
+        <div class="exp-arrow">→</div>
+      </a>
+
+      <a class="exp-item reveal" href="experiences/neurones-irsn.html">
+        <div class="exp-period">2011 – 2014</div>
+        <div class="exp-body">
+          <div class="exp-company">Neurones IT · prestation IRSN</div>
+          <div class="exp-role">Technicien informatique</div>
+          <p class="exp-mission">Technicien de proximité au sein de l'Institut de Radioprotection et de Sûreté Nucléaire. Déploiement et maintenance d'un parc informatique réparti sur 8 bâtiments, administration Active Directory, sauvegardes via Veritas NetBackup.</p>
+          <div class="exp-tags">
+            <span class="exp-tag">Nucléaire (IRSN)</span>
+            <span class="exp-tag">Active Directory</span>
+            <span class="exp-tag">NetBackup</span>
+            <span class="exp-tag">Masterisation</span>
+          </div>
+        </div>
+        <div class="exp-arrow">→</div>
+      </a>
+
+    </div>
+  </section>
+</div>
+
+<div class="section-divider"></div>
+
+<div class="container">
+  <section id="formations">
+    <p class="section-label">Formations & Certifications</p>
+    <div class="formation-grid reveal">
+      <div class="formation-item featured">
+        <div class="formation-year">2025</div>
+        <div class="formation-title">Intelligence Artificielle & Marketing Digital</div>
+        <div class="formation-org">LiveMentor</div>
+      </div>
+      <div class="formation-item">
+        <div class="formation-year">2025</div>
+        <div class="formation-title">Devenir Formateur</div>
+        <div class="formation-org">LiveMentor</div>
+      </div>
+      <div class="formation-item">
+        <div class="formation-year">2021</div>
+        <div class="formation-title">Développeur Web Full Stack</div>
+        <div class="formation-org">OpenClassrooms</div>
+      </div>
+      <div class="formation-item">
+        <div class="formation-year">2011</div>
+        <div class="formation-title">Titre Pro Technicien Micro Réseau</div>
+        <div class="formation-org">Telinf</div>
+      </div>
+      <div class="formation-item">
+        <div class="formation-year">2008</div>
+        <div class="formation-title">BTS Informatique de Gestion</div>
+        <div class="formation-org">Option Réseaux</div>
+      </div>
+      <div class="formation-item">
+        <div class="formation-year">2006</div>
+        <div class="formation-title">Baccalauréat Informatique de Gestion</div>
+        <div class="formation-org">—</div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="section-divider"></div>
+
+<div class="container">
+  <section id="competences">
+    <p class="section-label">Compétences & Portfolio</p>
+    <div class="skills-grid reveal">
+      <div class="skill-block">
+        <div class="skill-block-title">Support & Systèmes</div>
+        <div class="skill-pill-list">
+          <span class="skill-pill hot">Support N1/N2</span>
+          <span class="skill-pill hot">Active Directory</span>
+          <span class="skill-pill hot">Windows 10/11</span>
+          <span class="skill-pill">Masterisation</span>
+          <span class="skill-pill">Office 365</span>
+          <span class="skill-pill">Prise en main distante</span>
+          <span class="skill-pill">BitLocker</span>
+          <span class="skill-pill">SAP Admin</span>
+          <span class="skill-pill">NetBackup</span>
+        </div>
+      </div>
+      <div class="skill-block">
+        <div class="skill-block-title">Réseau & Exploitation</div>
+        <div class="skill-pill-list">
+          <span class="skill-pill hot">TCP/IP</span>
+          <span class="skill-pill hot">FTTH / PTO/PBO</span>
+          <span class="skill-pill">GLPI / ITSM</span>
+          <span class="skill-pill">VPN InWebo</span>
+          <span class="skill-pill">GNSS / GPS</span>
+          <span class="skill-pill">Brassage réseau</span>
+          <span class="skill-pill">Ticketing / SLA</span>
+        </div>
+      </div>
+      <div class="skill-block">
+        <div class="skill-block-title">Données & Rédaction</div>
+        <div class="skill-pill-list">
+          <span class="skill-pill hot">Gestion de données</span>
+          <span class="skill-pill hot">Excel / Pack Office</span>
+          <span class="skill-pill">Saisie alpha-numérique</span>
+          <span class="skill-pill">RGPD</span>
+          <span class="skill-pill">Archivage numérique</span>
+          <span class="skill-pill">Rédaction procédures</span>
+          <span class="skill-pill">Logigrammes</span>
+        </div>
+      </div>
+      <div class="skill-block">
+        <div class="skill-block-title">IA & Dev</div>
+        <div class="skill-pill-list">
+          <span class="skill-pill hot">IA Générative</span>
+          <span class="skill-pill">Prompt Engineering</span>
+          <span class="skill-pill">HTML / CSS / JS</span>
+          <span class="skill-pill">Full Stack (OC)</span>
+          <span class="skill-pill">Veille techno</span>
+        </div>
+      </div>
+      <a href="#" class="portfolio-cta" target="_blank" rel="noopener">
+        <div>
+          <div class="portfolio-cta-label">Mes projets</div>
+          <div class="portfolio-cta-title">Voir le Portfolio →</div>
+        </div>
+        <div class="portfolio-cta-arrow">↗</div>
+      </a>
+    </div>
+  </section>
+</div>
+
+<div class="container">
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-sig">Frédéric Marie-Appoline — 2025</span>
+      <nav class="footer-links">
+        <a href="mailto:fred.marie.appoline@gmail.com">Email</a>
+        <a href="tel:0649924442">Téléphone</a>
+        <a href="https://linkedin.com/in/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+  </footer>
+</div>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
