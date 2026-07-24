@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Devenir Formateur — LiveMentor · Frédéric Marie-Appoline</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --teal:#1a6b6b; --teal-mid:#1f8080; --teal-light:#2aaeae;
+      --teal-glow:rgba(42,174,174,0.12); --bg:#0b1214; --bg-card:#101a1c;
+      --bg-hover:#142022; --line:rgba(42,174,174,0.18); --text:#d8e8e8;
+      --text-dim:#7aa0a0; --text-faint:#3d6060; --accent:#2aaeae; --white:#f0f8f8;
+      --serif:'DM Serif Display',Georgia,serif; --mono:'DM Mono','Courier New',monospace;
+      --sans:'Instrument Sans',sans-serif; --ease:cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    html { scroll-behavior:smooth; }
+    body { background:var(--bg); color:var(--text); font-family:var(--sans); font-size:15px; line-height:1.65; overflow-x:hidden; }
+    body::before { content:''; position:fixed; inset:0; z-index:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E"); pointer-events:none; opacity:0.4; }
+    .container { position:relative; z-index:1; max-width:860px; margin:0 auto; padding:0 2rem; }
+    .section-divider { width:100%; height:1px; background:linear-gradient(90deg,transparent,var(--line) 30%,var(--line) 70%,transparent); margin:0; }
+
+    /* BACK */
+    .back-nav { padding:2rem 0 0; }
+    .back-link { font-family:var(--mono); font-size:0.7rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-faint); text-decoration:none; display:inline-flex; align-items:center; gap:0.5rem; transition:color 0.2s; }
+    .back-link:hover { color:var(--accent); }
+
+    /* HERO */
+    .detail-hero { padding:3rem 0 4rem; }
+    .hero-meta { font-family:var(--mono); font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--accent); margin-bottom:1rem; opacity:0; animation:fadeUp 0.7s var(--ease) 0.1s forwards; }
+    .hero-title { font-family:var(--serif); font-size:clamp(2rem,5vw,3.6rem); line-height:1.1; color:var(--white); margin-bottom:0.6rem; opacity:0; animation:fadeUp 0.8s var(--ease) 0.2s forwards; }
+    .hero-company { font-size:1rem; color:var(--text-dim); opacity:0; animation:fadeUp 0.8s var(--ease) 0.3s forwards; }
+    .hero-tags { display:flex; flex-wrap:wrap; gap:0.45rem; margin-top:2rem; opacity:0; animation:fadeUp 0.8s var(--ease) 0.4s forwards; }
+    .hero-tag { font-family:var(--mono); font-size:0.62rem; letter-spacing:0.08em; padding:0.25rem 0.6rem; background:var(--teal-glow); border:1px solid var(--line); color:var(--text-dim); border-radius:2px; }
+
+    /* CONTENT BLOCKS */
+    .detail-section { padding:3.5rem 0; }
+    .block-label { font-family:var(--mono); font-size:0.62rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--text-faint); margin-bottom:1.8rem; display:flex; align-items:center; gap:1rem; }
+    .block-label::after { content:''; flex:1; height:1px; background:var(--line); }
+
+    /* BLOCS THÉMATIQUES */
+    .theme-grid { display:grid; grid-template-columns:1fr 1fr; gap:2px; }
+    @media(max-width:580px){ .theme-grid { grid-template-columns:1fr; } }
+    .theme-block { background:var(--bg-card); border:1px solid var(--line); padding:2rem; }
+    .theme-block.full { grid-column:1/-1; }
+    .theme-block-title { font-family:var(--mono); font-size:0.62rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--accent); margin-bottom:1.2rem; }
+    .pill-list { display:flex; flex-wrap:wrap; gap:0.45rem; }
+    .pill { font-family:var(--mono); font-size:0.68rem; letter-spacing:0.05em; padding:0.3rem 0.7rem; background:transparent; border:1px solid rgba(42,174,174,0.45); color:var(--text); border-radius:1px; transition:background 0.15s,color 0.15s; }
+    .pill:hover { background:var(--teal-glow); color:var(--accent); }
+    .pill.dim { border-color:var(--line); color:var(--text-dim); }
+    .pill.dim:hover { border-color:rgba(42,174,174,0.45); color:var(--text); background:var(--teal-glow); }
+
+    /* SAR */
+    .sar-grid { display:grid; grid-template-columns:1fr; gap:2px; }
+    .sar-block { background:var(--bg-card); border:1px solid var(--line); padding:2rem; }
+    .sar-block:first-child { border-left:3px solid var(--accent); }
+    .sar-heading { font-family:var(--mono); font-size:0.65rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--accent); margin-bottom:0.6rem; }
+    .sar-text { font-size:0.9rem; color:var(--text); line-height:1.75; }
+    .sar-text p + p { margin-top:0.8rem; }
+
+    /* NARRATIVE */
+    .narrative-block { background:var(--bg-card); border:1px solid var(--line); border-left:3px solid var(--teal); padding:2.5rem; }
+    .narrative-text { font-size:0.95rem; line-height:1.85; color:var(--text); font-style:italic; }
+    .narrative-text p + p { margin-top:1rem; }
+
+    /* LEARNINGS */
+    .learning-list { display:flex; flex-direction:column; gap:2px; }
+    .learning-item { background:var(--bg-card); border:1px solid var(--line); padding:1.5rem 2rem; display:flex; gap:1.2rem; align-items:flex-start; }
+    .learning-icon { color:var(--accent); font-size:1rem; flex-shrink:0; margin-top:0.1rem; }
+    .learning-text { font-size:0.88rem; color:var(--text-dim); line-height:1.7; }
+    .learning-text strong { color:var(--text); font-weight:600; }
+
+    /* FOOTER */
+    .detail-footer { padding:3rem 0; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
+    .footer-sig { font-family:var(--serif); font-size:0.9rem; color:var(--text-faint); font-style:italic; }
+    .footer-back { font-family:var(--mono); font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-faint); text-decoration:none; transition:color 0.2s; }
+    .footer-back:hover { color:var(--accent); }
+
+    @keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+    .reveal { opacity:0; transform:translateY(14px); transition:opacity 0.6s var(--ease),transform 0.6s var(--ease); }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+    ::-webkit-scrollbar{width:4px} ::-webkit-scrollbar-track{background:var(--bg)} ::-webkit-scrollbar-thumb{background:var(--teal);border-radius:2px}
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <nav class="back-nav">
+    <a class="back-link" href="../index.html">← Retour au CV</a>
+  </nav>
+</div>
+
+<div class="container">
+  <div class="detail-hero">
+    <div class="hero-meta">2025 · LiveMentor</div>
+    <h1 class="hero-title">Devenir<br>Formateur</h1>
+    <p class="hero-company">LiveMentor · Formation en ligne avec mentorat · 13 modules</p>
+    <div class="hero-tags">
+      <span class="hero-tag">Ingénierie pédagogique</span>
+      <span class="hero-tag">Conception de formation</span>
+      <span class="hero-tag">Lancement</span>
+      <span class="hero-tag">Qualiopi / CPF</span>
+      <span class="hero-tag">Animation</span>
+      <span class="hero-tag">Formateur indépendant</span>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- BLOCS THÉMATIQUES -->
+<div class="container">
+  <section class="detail-section">
+    <div class="block-label">Compétences abordées</div>
+    <div class="theme-grid">
+
+      <div class="theme-block full reveal">
+        <div class="theme-block-title">Ingénierie pédagogique</div>
+        <div class="pill-list">
+          <span class="pill">Modèle ADDIE</span>
+          <span class="pill">Andragogie</span>
+          <span class="pill">Profils d'apprentissage</span>
+          <span class="pill">Objectifs de compétences</span>
+          <span class="pill">Évaluations pédagogiques</span>
+          <span class="pill">Modalités e-learning</span>
+          <span class="pill">Progression pédagogique</span>
+          <span class="pill">Animation présentiel / distanciel</span>
+          <span class="pill">Gestion des profils difficiles</span>
+        </div>
+      </div>
+
+      <div class="theme-block reveal">
+        <div class="theme-block-title">Business & lancement</div>
+        <div class="pill-list">
+          <span class="pill dim">Pricing</span>
+          <span class="pill dim">Packaging offre</span>
+          <span class="pill dim">Version bêta</span>
+          <span class="pill dim">CAPE SONCASE</span>
+          <span class="pill dim">Page de vente</span>
+          <span class="pill dim">Calendrier éditorial</span>
+          <span class="pill dim">Newsletter de lancement</span>
+          <span class="pill dim">Google Analytics</span>
+          <span class="pill dim">Prospection B2B</span>
+        </div>
+      </div>
+
+      <div class="theme-block reveal">
+        <div class="theme-block-title">Cadre légal & financement</div>
+        <div class="pill-list">
+          <span class="pill dim">Qualiopi</span>
+          <span class="pill dim">CPF</span>
+          <span class="pill dim">Déclaration d'activité</span>
+          <span class="pill dim">MonCompteFormation</span>
+          <span class="pill dim">Dossiers de financement</span>
+          <span class="pill dim">Datadock</span>
+          <span class="pill dim">Référentiel National Qualité</span>
+          <span class="pill dim">Facturation formation</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- SAR -->
+<div class="container">
+  <section class="detail-section">
+    <div class="block-label">La formation</div>
+    <div class="sar-grid">
+
+      <div class="sar-block reveal">
+        <div class="sar-heading">Situation</div>
+        <div class="sar-text">
+          <p>Praticien avant d'être formateur. J'avais des savoirs à transmettre — en IT, en IA, en support — mais pas encore le cadre pour le faire de manière structurée et professionnelle. Cette formation LiveMentor est venue répondre à ce besoin : donner une méthode à une envie, et poser les bases d'un projet de formateur indépendant.</p>
+        </div>
+      </div>
+
+      <div class="sar-block reveal">
+        <div class="sar-heading">Ce que j'y ai fait</div>
+        <div class="sar-text">
+          <p>13 modules couvrant l'intégralité du parcours formateur : ingénierie pédagogique (modèle ADDIE, andragogie, profils d'apprentissage, objectifs de compétences), conception et lancement d'une formation (version bêta, packaging, pricing, argumentaire CAPE SONCASE), stratégie de contenu et marketing (newsletter, calendrier éditorial, page de vente, Google Analytics), animation en présentiel et à distance, et cadre légal et financement (Qualiopi, CPF, déclaration d'activité, dossiers de financement).</p>
+        </div>
+      </div>
+
+      <div class="sar-block reveal">
+        <div class="sar-heading">Résultats</div>
+        <div class="sar-text">
+          <p>Une vision claire et complète du métier de formateur indépendant — de la conception du contenu jusqu'à la facturation. Les bases sont posées pour lancer une offre de formation structurée, finançable et transmissible.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- NARRATIVE -->
+<div class="container">
+  <section class="detail-section">
+    <div class="block-label">Contexte & vécu</div>
+    <div class="narrative-block reveal">
+      <div class="narrative-text">
+        <p>Ce qui m'a attiré vers cette formation, c'est une question simple : comment transmettre ce que je sais de manière qui tienne vraiment ? Pas juste expliquer — structurer, progresser, évaluer, adapter. J'avais la matière. Il me manquait la méthode.</p>
+        <p>Découvrir l'ingénierie pédagogique — le modèle ADDIE, l'andragogie, les profils d'apprentissage — c'était mettre des mots sur ce que j'avais observé intuitivement en regardant de bons formateurs. Et comprendre que former, c'est un métier à part entière, pas une extension naturelle du fait de savoir faire quelque chose.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- LEARNINGS -->
+<div class="container">
+  <section class="detail-section">
+    <div class="block-label">Ce que j'en ai retenu</div>
+    <div class="learning-list">
+      <div class="learning-item reveal">
+        <div class="learning-icon">◆</div>
+        <div class="learning-text"><strong>Savoir faire ≠ savoir transmettre.</strong> L'ingénierie pédagogique existe précisément pour combler cet écart. C'est une compétence à part entière qui s'apprend et se structure.</div>
+      </div>
+      <div class="learning-item reveal">
+        <div class="learning-icon">◆</div>
+        <div class="learning-text"><strong>Un projet de formation se construit comme un produit.</strong> Positionnement, cible, version bêta, pricing, lancement — la rigueur du business s'applique autant que la pédagogie.</div>
+      </div>
+      <div class="learning-item reveal">
+        <div class="learning-icon">◆</div>
+        <div class="learning-text"><strong>Le cadre légal n'est pas un obstacle — c'est une opportunité.</strong> Qualiopi, CPF, déclaration d'activité — comprendre ces mécanismes, c'est rendre son offre accessible, crédible et finançable.</div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="container">
+  <footer class="detail-footer">
+    <span class="footer-sig">Frédéric Marie-Appoline</span>
+    <a class="footer-back" href="../index.html">← Retour au CV</a>
+  </footer>
+</div>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 100);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.06 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
